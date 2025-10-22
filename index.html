@@ -1,29 +1,47 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Bloons_TD_5</title>
-    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-    <style>
-      body {
-        background-color: #000;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bloons TD 5</title>
+  <!-- Ruffle CDN -->
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+    }
+    ruffle-player {
+      width: 1000px;
+      height: 1000px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <!-- Ruffle player -->
+  <ruffle-player src="610995_btd5.swf"></ruffle-player>
+
+  <!-- Optional: Auto-init Ruffle (fallback if <ruffle-player> doesn't load) -->
+  <script>
+    window.addEventListener("load", () => {
+      if (!document.querySelector("ruffle-player").shadowRoot) {
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        player.style.width = "1000px";
+        player.style.height = "1000px";
+        document.body.appendChild(player);
+        player.load("610995_btd5.swf");
       }
-      ruffle-player {
-        width: 1000px;
-        height: 1000px;
-        border: 2px solid #333;
-        border-radius: 10px;
-        overflow: hidden;
-      }
-    </style>
-  </head>
-  <body>
-    <ruffle-player src="610995_btd5.swf"></ruffle-player>
-  </body>
+    });
+  </script>
+</body>
 </html>
 
